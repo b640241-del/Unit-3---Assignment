@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Info - My Digital Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <header>
+        <div class="logo-box" style="background: transparent; padding: 0; margin-right: 40px;">
+            <a href="index.html" style="display: flex; align-items: center; gap: 14px; text-decoration: none;">
+                
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                    <line x1="16" y1="7" x2="6" y2="25" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="6" y1="25" x2="26" y2="25" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="26" y1="25" x2="16" y2="7" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" stroke-linecap="round"/>
+                    
+                    <circle cx="16" cy="7" r="4.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
+                    <circle cx="6" cy="25" r="3.5" fill="#ffffff"/>
+                    <circle cx="26" cy="25" r="3.5" fill="#ffffff"/>
+                </svg>
+                
+                <span style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #ffffff; letter-spacing: 0.5px;">
+                    CS<span style="color: #2563eb;">.</span>DEV
+                </span>
+                
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-item">Home</a></li>
+                <li><a href="about.html" class="nav-item">About me</a></li>
+                <li><a href="projects.html" class="nav-item">My projects</a></li>
+                <li><a href="contact.html" class="nav-item active">Contact info</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="contact-section">
+            
+            <h1 class="page-title">Contact me</h1>
+            
+            <form id="contact-form" class="contact-form">
+                <div class="input-line-container">
+                    <input type="email" class="form-input-line" placeholder="Email Address" required>
+                </div>
+                
+                <div class="textarea-container">
+                    <textarea id="message-box" class="form-textarea" placeholder="Enter message" maxlength="500" required></textarea>
+                    <span id="counter" class="char-count">0/500 characters</span>
+                </div>
+                
+                <div class="form-button-container">
+                    <button type="submit" class="submit-button">Submit</button>
+                </div>
+
+                <div id="success-message" class="success-message">Message submitted</div>
+            </form>
+            
+        </div>
+    </main>
+
+    <script>
+        const messageBox = document.getElementById('message-box');
+        const counter = document.getElementById('counter');
+        const contactForm = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+
+        messageBox.addEventListener('input', () => {
+            const charCount = messageBox.value.length;
+            counter.textContent = `${charCount}/500 characters`;
+        });
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            successMessage.classList.add('show');
+            
+            setTimeout(() => {
+                contactForm.reset();
+                counter.textContent = '0/500 characters';
+            }, 200);
+        });
+    </script>
+
+</body>
+</html>
